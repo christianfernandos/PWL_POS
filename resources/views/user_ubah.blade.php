@@ -6,7 +6,7 @@
         </h1>
         <a href="{{url('user')}}">Kembali</a>
         <br><br>
-        <form method="post" action="{{ url('/user/ubah_simpan/' . $data->user_id) }}">
+        <form method="post" action="{{ url('/user/ubah/' . $data->user_id) }}">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <label>Username</label>
