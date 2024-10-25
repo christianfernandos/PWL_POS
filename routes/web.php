@@ -12,18 +12,6 @@ use App\Http\Controllers\PenjualanDetailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::pattern('id', '[0-9]+'); // Artinya: Ketika ada parameter {id}, maka harus berupa angka
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -125,7 +113,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['prefix' => 'supplier', 'middleware' => ['authorize:ADM,MNG,STF']], function () {
-        Route::get('/', [SupplierController::class, 'index']);              // menampilkan halaman awal supplier
+        Route::get('/', [SupplierController::class, 'index']);              // menampilkan halaman awal di bagian supplier
         Route::post('/list', [SupplierController::class, 'list']);          // menampilkan data supplier dalam bentuk json untuk datatables
         Route::get('/create', [SupplierController::class, 'create']);       // menampilkan halaman form tambah supplier
         Route::post('/', [SupplierController::class, 'store']);              // menyimpan data supplier baru
