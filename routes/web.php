@@ -158,7 +158,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']);
         Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']);
         Route::get('/{id}/show_ajax', [StokController::class, 'show_ajax']);
-        Route::get('/{id}', [StokController::class, 'show']);       // Menampilkan detail stok
+        Route::get('/{id}', [StokController::class, 'show']);       // Menampilkan detail stok yang tersedia
         Route::get('/{id}/edit', [StokController::class, 'edit']);  // Menampilkan halaman form edit stok
         Route::put('/{id}', [StokController::class, 'update']);     // Menyimpan perubahan data stok
         Route::delete('/{id}', [StokController::class, 'destroy']); // Menghapus data stok
@@ -181,7 +181,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}/delete_ajax', [PenjualanDetailController::class, 'delete_ajax']); // Menghapus data penjualan via ajax
         Route::get('/{id}/show_ajax', [PenjualanDetailController::class, 'show_ajax']); // Menampilkan detail penjualan ajax
         Route::get('/{id}', [PenjualanDetailController::class, 'show']);       // Menampilkan detail penjualan
-        Route::put('/{id}', [PenjualanDetailController::class, 'update']);     // Menyimpan perubahan data penjualan
+        Route::put('/{id}', [PenjualanDetailController::class, 'update']);     // Menyimpan perubahan pada data penjualan
         Route::delete('/{id}', [PenjualanDetailController::class, 'destroy']); // Menghapus data penjualan
         Route::get('/import', [PenjualanDetailController::class, 'import']);
         Route::post('/import_ajax', [PenjualanDetailController::class, 'import_ajax']);
