@@ -144,7 +144,7 @@
                                     title: 'Berhasil',
                                     text: response.message,
                                 }).then(function() {
-                                    window.location = response.redirect; // mengarahkan ke halaman login
+                                    window.location = response.redirect;
                                 });
                             } else {
                                 Swal.fire({

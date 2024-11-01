@@ -9,7 +9,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PenjualanDetailController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Artinya: Ketika ada parameter {id}, maka harus berupa angka
@@ -24,6 +24,12 @@ Route::post('register', [AuthController::class, 'postRegister']);
 // Group route yang memerlukan autentikasi
 Route::middleware('auth')->group(function () {
     Route::get('/', [WelcomeController::class, 'index']);
+
+    Route::group(['prefix' =>'profil'],function(){
+        Route::get('/', [ProfilController::class, 'index'])->name('profil.index');
+        Route::patch('/{id}', [ProfilController::class, 'update'])->name('profil.update');
+
+    });
 
     Route::group(['prefix' => 'user', 'middleware' => 'authorize:ADM'], function () {
         Route::get('/', [UserController::class, 'index']);         // menampilkan halaman awal user
@@ -177,13 +183,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/export_pdf', [PenjualanDetailController::class, 'export_pdf']);     // Export data penjualan ke PDF
     });
 
-
     
 
-    Route::group(['prefix' => 'profile', 'middleware' => ['authorize:ADM,MNG,STF,CUS']], function () {
-        Route::get('/', [ProfileController::class, 'index']);
-        Route::post('/update_profile', [ProfileController::class, 'update_profile']);
-        Route::put('/update_pengguna/{id}', [ProfileController::class, 'update_pengguna']);
-        Route::put('/update_password/{id}', [ProfileController::class, 'update_password']);
-    });
+    
 });

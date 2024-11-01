@@ -506,5 +506,6 @@ class PenjualanDetailController extends Controller
         $pdf->render();
 
         return $pdf->stream('Data Penjualan ' . date('Y-m-d H:i:s') . '.pdf');
+    
     }
 }
